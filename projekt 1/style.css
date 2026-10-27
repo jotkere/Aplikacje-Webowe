@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  color: #172326;
+  background: #e5f0ec;
+  font:
+    16px Arial,
+    sans-serif;
+  line-height: 1.5;
+}
+header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 7%;
+  color: white;
+  background: #142629;
+}
+.brand {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a:hover,
+.active {
+  color: #f04a51;
+}
+main {
+  width: 100%;
+  box-sizing: border-box;
+}
+.hero {
+  min-height: 70vh;
+  padding: 70px 10%;
+  color: white;
+  background:
+    linear-gradient(#071418aa, #071418aa),
+    url("https://www.pzts.pl/wp-content/uploads/2025/11/51670364598_c0bd169c76_k.jpg")
+      center/cover;
+}
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+}
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  color: white;
+  background: #d82f37;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.content {
+  padding: 45px 7%;
+}
+.intro-content {
+  padding-bottom: 0;
+}
+.extra-info {
+  padding-top: 0;
+}
+.extra-info > h2:first-child {
+  margin-top: 0;
+}
+.cards,
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.cards article,
+.gallery figure {
+  flex: 1 1 240px;
+  min-width: 0;
+  margin: 0;
+  padding: 14px;
+  background: #c9e3db;
+}
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.gallery figcaption {
+  padding-top: 10px;
+}
+form {
+  display: grid;
+  gap: 10px;
+  max-width: 500px;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font: inherit;
+}
+input[type="submit"] {
+  width: auto;
+}
+video {
+  display: block;
+  max-width: 100%;
+  max-height: 75vh;
+  margin: 20px auto;
+}
+footer {
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  header,
+  footer {
+    flex-direction: column;
+  }
+  .hero {
+    padding: 45px 7%;
+  }
+  .hero h1 {
+    font-size: 38px;
+  }
+}

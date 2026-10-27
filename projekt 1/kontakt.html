@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kontakt | Tenis stołowy niesłyszących</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="home.html">Tenis stołowy niesłyszących</a>
+      <nav>
+        <a href="home.html">Home</a>
+        <a class="active" href="kontakt.html">Kontakt</a>
+        <a href="galeria.html">Galeria</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <h1>Kontakt</h1>
+      <p>
+        Masz pytanie o kadrę Polski, Mistrzostwa Europy czy igrzyska Głuchych?
+        Napisz.
+      </p>
+      <form id="contact-form">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          name="email"
+          type="text"
+          placeholder="np. anna@example.com"
+          required
+          pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+        />
+
+        <label for="subject">Temat wiadomości</label>
+        <select id="subject" name="subject" required>
+          <option value="" selected disabled>Wybierz temat</option>
+          <option>Kadra Polski</option>
+          <option>mistrzostwa Europy</option>
+          <option>Deaflympics</option>
+        </select>
+
+        <label for="message">Wiadomość</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Napisz wiadomość..."
+          required
+        ></textarea>
+        <input class="button" type="submit" value="Wyślij" />
+      </form>
+    </main>
+
+    <footer>
+      <span>Tenis stołowy niesłyszących</span>
+      <span>Autor: Karol Jabłoński</span>
+    </footer>
+  </body>
+</html>
