@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generator haseł</title>
+  <script src="assets/js/password-generator.js" defer></script>
+</head>
+<body>
+  <h1>Generator haseł</h1>
+  <form id="formularz">
+    <p>
+      <label for="minimum">Minimalna długość hasła:</label>
+      <input id="minimum" type="number" min="1" max="256" value="8" required>
+    </p>
+    <p>
+      <label for="maksimum">Maksymalna długość hasła:</label>
+      <input id="maksimum" type="number" min="1" max="256" value="16" required>
+    </p>
+    <p>
+      <label><input id="wielkie" type="checkbox"> Hasło ma zawierać wielkie litery</label>
+    </p>
+    <p>
+      <label><input id="specjalne" type="checkbox"> Hasło ma zawierać znaki specjalne</label>
+    </p>
+    <button type="submit">Wygeneruj hasło</button>
+  </form>
+  <p><a href="index.html">Powrót</a></p>
+</body>
+</html>

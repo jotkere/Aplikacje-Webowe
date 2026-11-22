@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main>
+      <section class="game" aria-label="Gra Flappy Bird">
+        <canvas id="game" width="360" height="560" aria-label="Plansza gry"></canvas>
+
+        <div class="score" aria-live="polite">
+          <span>WYNIK</span>
+          <strong id="score">0</strong>
+        </div>
+        <section class="panel" id="welcome">
+          <h1>Flappy Bird</h1>
+          <p>Leć między rurami i zdobywaj punkty.</p>
+          <p class="controls"><kbd>SPACJA</kbd> podbij ptaka</p>
+          <button id="start">Zagraj</button>
+        </section>
+
+        <section class="panel" id="ending" hidden>
+          <h1 id="ending-title">Game Over</h1>
+          <p>Najlepszy wynik: <strong id="best-score">0</strong></p>
+          <p>Wynik poprzedniej gry: <strong id="last-score">0</strong></p>
+          <h2>Najlepsze wyniki</h2>
+          <ol id="score-list" aria-label="Pięć najlepszych wyników"></ol>
+          <button id="replay">Zagraj ponownie</button>
+        </section>
+      </section>
+    </main>
+    <audio id="music" src="assets/music.wav" loop preload="auto"></audio>
+    <script src="game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Produkty z API</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+    <script src="assets/js/products-api.js" defer></script>
+  </head>
+  <body>
+    <h1>Produkty z API</h1>
+    <label for="szukaj">Filtruj:</label>
+    <input id="szukaj" type="search" disabled />
+    <label for="sortowanie">Sortowanie:</label>
+    <select id="sortowanie" disabled>
+      <option value="original">Oryginalna kolejność</option>
+      <option value="ascending">Rosnąco</option>
+      <option value="descending">Malejąco</option>
+    </select>
+    <p id="status">Pobieranie danych...</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Zdjęcie</th>
+          <th>Tytuł</th>
+          <th>Opis</th>
+        </tr>
+      </thead>
+      <tbody id="produkty"></tbody>
+    </table>
+    <p><a href="index.html">Powrót</a></p>
+  </body>
+</html>
