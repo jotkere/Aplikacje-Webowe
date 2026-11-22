@@ -27,7 +27,7 @@
     "pipe-body": "png",
     "pipe-cap-top": "png",
     "pipe-cap-bottom": "png",
-    ground: "svg"
+    ground: "svg",
   };
   Object.entries(assetFiles).forEach(([name, extension]) => {
     const image = new Image();
@@ -54,9 +54,7 @@
           .sort((a, b) => b - a)
           .slice(0, 5);
       }
-    } catch (error) {
-      // The game can still run if local storage is unavailable.
-    }
+    } catch (error) {}
     return [];
   }
 
@@ -113,8 +111,11 @@
 
   function hitPipe() {
     return pipes.some((pipe) => {
-      const overlapsX = bird.x + BIRD_RADIUS > pipe.x && bird.x - BIRD_RADIUS < pipe.x + PIPE_WIDTH;
-      const outsideGap = bird.y - BIRD_RADIUS < pipe.top || bird.y + BIRD_RADIUS > pipe.bottom;
+      const overlapsX =
+        bird.x + BIRD_RADIUS > pipe.x &&
+        bird.x - BIRD_RADIUS < pipe.x + PIPE_WIDTH;
+      const outsideGap =
+        bird.y - BIRD_RADIUS < pipe.top || bird.y + BIRD_RADIUS > pipe.bottom;
       return overlapsX && outsideGap;
     });
   }
@@ -130,12 +131,13 @@
 
   function finishGame() {
     previousScore = score;
-    records = records.concat(score).sort((a, b) => b - a).slice(0, 5);
+    records = records
+      .concat(score)
+      .sort((a, b) => b - a)
+      .slice(0, 5);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-    } catch (error) {
-      // Keep the current result visible even when storage is unavailable.
-    }
+    } catch (error) {}
     setScreen("gameover");
   }
 
@@ -182,15 +184,20 @@
 
     groundOffset = (groundOffset + speed * delta) % 120;
 
-    if (hitPipe() || bird.y - BIRD_RADIUS < 0 || bird.y + BIRD_RADIUS >= GROUND_Y) {
+    if (
+      hitPipe() ||
+      bird.y - BIRD_RADIUS < 0 ||
+      bird.y + BIRD_RADIUS >= GROUND_Y
+    ) {
       crash();
     }
   }
 
   function drawBird() {
-    const frame = state === "playing" && Math.floor(wingFrameTime / 0.14) % 2
-      ? images["bird-flap"]
-      : images.bird;
+    const frame =
+      state === "playing" && Math.floor(wingFrameTime / 0.14) % 2
+        ? images["bird-flap"]
+        : images.bird;
     ctx.save();
     ctx.translate(bird.x, bird.y);
     ctx.rotate(bird.angle);
@@ -203,16 +210,34 @@
   function drawPipe(pipe, topPipe) {
     const body = images["pipe-body"];
     const cap = images[topPipe ? "pipe-cap-bottom" : "pipe-cap-top"];
-    if (!body.complete || !body.naturalWidth || !cap.complete || !cap.naturalWidth) return;
+    if (
+      !body.complete ||
+      !body.naturalWidth ||
+      !cap.complete ||
+      !cap.naturalWidth
+    )
+      return;
 
     if (topPipe) {
       const bodyHeight = Math.max(0, pipe.top - PIPE_CAP_HEIGHT);
       ctx.drawImage(body, pipe.x, 0, PIPE_WIDTH, bodyHeight);
-      ctx.drawImage(cap, pipe.x, pipe.top - PIPE_CAP_HEIGHT, PIPE_WIDTH, PIPE_CAP_HEIGHT);
+      ctx.drawImage(
+        cap,
+        pipe.x,
+        pipe.top - PIPE_CAP_HEIGHT,
+        PIPE_WIDTH,
+        PIPE_CAP_HEIGHT,
+      );
     } else {
       const bodyY = pipe.bottom + PIPE_CAP_HEIGHT;
       ctx.drawImage(cap, pipe.x, pipe.bottom, PIPE_WIDTH, PIPE_CAP_HEIGHT);
-      ctx.drawImage(body, pipe.x, bodyY, PIPE_WIDTH, Math.max(0, GROUND_Y - bodyY));
+      ctx.drawImage(
+        body,
+        pipe.x,
+        bodyY,
+        PIPE_WIDTH,
+        Math.max(0, GROUND_Y - bodyY),
+      );
     }
   }
 
